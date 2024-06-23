@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show User</title>
+</head>
+<body>
+<h1>User Details</h1>
+
+<p>ID: <span th:text="${user.id}"></span></p>
+<p>Name: <span th:text="${user.name}"></span></p>
+<p>Surname: <span th:text="${user.surname}"></span></p>
+<p>Salary: <span th:text="${user.salary}"></span></p>
+
+<div>
+    <!-- Ссылка для редактирования пользователя -->
+    <a th:href="@{'/editUser?id=' + ${user.id}}">
+        <button type="button">Edit User</button>
+    </a>
+    <br><br>
+    <!-- Форма для удаления пользователя -->
+    <form th:action="@{/deleteUser}" method="post" style="display: inline;">
+        <input type="hidden" name="id" th:value="${user.id}">
+        <input type="submit" value="Delete User">
+    </form>
+</div>
+
+</body>
+</html>
+
